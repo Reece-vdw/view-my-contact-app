@@ -1,19 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { FormsModule } from '@angular/forms';
+import { ContactsComponent } from './views/contacts/contacts.component';
+import { AboutMeComponent } from './views/about-me/AboutMeComponent';
+import { RouterModule, Routes } from '@angular/router';
+import { AppSidebarComponent } from './views/app-sidebar/app-sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
+
+const routes: Routes = [
+  { path: 'contacts', component: ContactsComponent },
+  { path: 'about', component: AboutMeComponent },
+];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    ContactsComponent,
+    AboutMeComponent,
+    AppSidebarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSidenavModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

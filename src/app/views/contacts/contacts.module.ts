@@ -4,14 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ContactsRoutingModule } from './contacts-routing.module';
 import { ContactsComponent } from './contacts.component';
 
-
 @NgModule({
-  declarations: [
-    ContactsComponent
-  ],
-  imports: [
-    CommonModule,
-    ContactsRoutingModule
-  ]
+  declarations: [],
+  imports: [CommonModule, ContactsRoutingModule],
 })
-export class ContactsModule { }
+export class ContactsModule {}

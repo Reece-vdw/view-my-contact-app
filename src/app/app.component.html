@@ -1,0 +1,28 @@
+<!-- app.component.html -->
+
+<div class="container-fluid">
+  <div class="row">
+    <app-app-sidebar></app-app-sidebar>
+    <div class="col-md-2 sidebar">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contacts" routerLinkActive="active">
+            <img src="/assets/icons/contacts.png" class="mr-2" />View my
+            Contacts
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">
+            <img
+              src="/assets/icons/info.png"
+              class="fas fa-info-circle mr-2"
+            />About me</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

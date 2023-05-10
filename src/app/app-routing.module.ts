@@ -14,11 +14,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./views/about-me/about-me.module').then((m) => m.AboutMeModule),
   },
-  {
-    path: 'about-me',
-    loadChildren: () =>
-      import('./views/about-me/about-me.module').then((m) => m.AboutMeModule),
-  },
 ];
 
 @NgModule({

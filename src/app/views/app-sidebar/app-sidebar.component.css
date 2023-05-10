@@ -1,0 +1,28 @@
+.sidebar {
+  background-color: #f4f4f4;
+  height: 100%;
+  padding: 20px;
+}
+
+h1 {
+  color: #54a4e1;
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #212529;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  text-decoration: none;
+}

@@ -1,60 +1,116 @@
-<div class="contacts">
-  <div class="contacts__nav">
-    <mat-nav-list>
-      <a mat-list-item [routerLink]="['/contacts']" routerLinkActive="active"
-        >Contacts</a
-      >
-      <a mat-list-item [routerLink]="['/about']" routerLinkActive="active"
-        >About Me</a
-      >
-    </mat-nav-list>
-  </div>
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search Contacts"
+            [(ngModel)]="searchQuery"
+          />
+          <button class="btn btn-primary" (click)="addContact()">
+            Add Contact
+          </button>
+          <div *ngIf="showModal">
+            <form (submit)="submitContactForm()">
+              <label>
+                First Name
+                <input
+                  type="text"
+                  [(ngModel)]="firstName"
+                  name="firstName"
+                  required
+                  maxlength="50"
+                />
+              </label>
 
-  <div class="contacts__content">
-    <div class="contacts__list">
-      <mat-form-field appearance="fill">
-        <mat-label>Filter contacts</mat-label>
-        <input matInput placeholder="Search contacts..." />
-      </mat-form-field>
+              <label>
+                Last Name
+                <input
+                  type="text"
+                  [(ngModel)]="lastName"
+                  name="lastName"
+                  required
+                  maxlength="50"
+                />
+              </label>
 
-      <ul class="contacts__items">
-        <li
-          *ngFor="let contact of filteredContacts"
-          (click)=""
-          [class.active]="selectedContact?.id === contact.id"
-        >
-          <div class="contact__initials">
-            {{ contact.firstName[0] }}
+              <label>
+                Cellphone Number
+                <input
+                  type="tel"
+                  [(ngModel)]="cellphone"
+                  name="cellphone"
+                  pattern="[0-9]*"
+                  required
+                />
+              </label>
+
+              <label>
+                Address
+                <textarea
+                  [(ngModel)]="address"
+                  name="address"
+                  required
+                  maxlength="255"
+                ></textarea>
+              </label>
+
+              <label>
+                Biography
+                <textarea
+                  [(ngModel)]="biography"
+                  name="biography"
+                  required
+                  maxlength="255"
+                ></textarea>
+              </label>
+
+              <button type="submit">Add Contact</button>
+            </form>
           </div>
-          <div class="contact__details">
-            <div class="contact__name">
-              {{ contact.firstName }} {{ contact.lastName }}
-            </div>
-            <div class="contact__phone">{{ contact.cellNumber }}</div>
-          </div>
-        </li>
-        <li class="contacts__empty" *ngIf="filteredContacts.length === 0">
-          No contacts found.
-        </li>
-      </ul>
-
-      <button mat-raised-button color="primary">Add Contact</button>
-    </div>
-
-    <div class="contacts__details">
-      <div
-        class="contact__initials contact__initials--large"
-        *ngIf="selectedContact"
-      >
-        {{ selectedContact.firstName[0] }}
-      </div>
-      <div class="contact__details" *ngIf="selectedContact">
-        <div class="contact__name">
-          {{ selectedContact.firstName }} {{ selectedContact.lastName }}
         </div>
-
-        <div class="contact__age" *ngIf="selectedContact?.age">
-          Age: {{ selectedContact.age }}
+        <div *ngIf="contacts.length > 0">
+          <ul class="list-group">
+            <li
+              class="list-group-item"
+              [ngClass]="{ active: selectedContact === contact }"
+              *ngFor="let contact of filteredContacts"
+            >
+              <div class="d-flex justify-content-start align-items-center">
+                <div class="initials">{{ getInitials(contact.firstName) }}</div>
+                <div class="ml-3">
+                  {{ contact.firstName }} {{ contact.lastName }}
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="contacts.length === 0">
+          <p>No contacts found.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <div *ngIf="selectedContact" class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-center align-items-center mb-3">
+          <div class="initials-lg">
+            {{ getInitials(selectedContact.firstName) }}
+          </div>
+        </div>
+        <div class="mb-3">
+          <strong
+            >{{ selectedContact.firstName }}
+            {{ selectedContact.lastName }}</strong
+          >
+        </div>
+        <div class="mb-3">
+          <p>Email: {{ selectedContact.email }}</p>
+          <p>Phone: {{ selectedContact.cellNumber }}</p>
+          <p>Age: {{ selectedContact.age }}</p>
         </div>
       </div>
     </div>

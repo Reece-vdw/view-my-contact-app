@@ -1,0 +1,80 @@
+// Variables
+$primary-color: #54a4e1;
+$gray-color: #e2e2e2;
+
+// Contact list
+.contact-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  li {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    &:hover {
+      background-color: #f3f3f3;
+    }
+    &.active {
+      background-color: $gray-color;
+    }
+    .initials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: $primary-color;
+      color: white;
+      font-size: 20px;
+      margin-right: 16px;
+    }
+    .contact-info {
+      h4 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      p {
+        margin: 0;
+        font-size: 14px;
+        color: #888;
+      }
+    }
+  }
+}
+
+// Contact details
+.contact-details {
+  padding: 16px;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+  h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  p {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #888;
+    strong {
+      font-weight: 600;
+      color: #333;
+    }
+  }
+  .age-prediction {
+    font-size: 14px;
+    color: #888;
+    margin-top: 8px;
+  }
+}
+nav a {
+  color: #333;
+}
+
+nav a.active {
+  background-color: #e2e2e2;
+}
